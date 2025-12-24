@@ -1,0 +1,21 @@
+version: "3"
+services:
+  ownfoil:
+    container_name: OwnFoil
+    image: a1ex4/ownfoil:latest
+    environment:
+      # For write permission in config directory
+      - PUID=1026
+      - PGID=101
+      # to create/update an admin user at startup
+      - USER_ADMIN_NAME=iplaza
+      - USER_ADMIN_PASSWORD=Sofia2013
+      # to create/update a regular user at startup
+      # - USER_GUEST_NAME=guest
+      # - USER_GUEST_PASSWORD=oerze!@8981
+    volumes:
+      - /volume3/Nintendo Switch/Juegos:/games
+      - ./config:/app/config
+      - ./data:/app/data
+    ports:
+      - "8465:8465"
